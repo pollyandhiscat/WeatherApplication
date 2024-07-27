@@ -1,13 +1,29 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
     DateTime timeOfDay = DateTime.Now;
-    if (timeOfDay.Hour <= 12)
+    int currentHour = timeOfDay.Hour;
+    string timeGreeting = "";
+
+    if (currentHour < 11)
     {
-        //
+        timeGreeting = "Morning";
+    }
+
+    else if (currentHour >= 11 && currentHour < 16)
+    {
+
+        timeGreeting = "Afternoon";
+    }
+
+    else
+    {
+
+        timeGreeting = "Evening";
     }
 }
 
 <div class="text-center">
-    <h1 class="display-4">Good @timeOfDay</h1>
-    
+    <h1 class="display-4">Good @timeGreeting</h1>
+    <h3>To get started with weather retrieval, simply enter location information <br> into the prompt boxes.</h3>
+
 </div>
