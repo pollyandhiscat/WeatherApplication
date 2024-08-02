@@ -2,6 +2,7 @@
     ViewData["Title"] = "Home Page";
     // TODO: Turn this logic into a controller function and have the value returned to this View.
     DateTime timeOfDay = DateTime.Now;
+    // Citation #1
     int currentHour = timeOfDay.Hour;
     string timeGreeting = "";
 
@@ -26,5 +27,4 @@
 <div class="text-center">
     <h1 class="display-4">Good @timeGreeting</h1>
     <h3>To get started with weather retrieval, simply enter location information <br> into the prompt boxes.</h3>
-
 </div>
