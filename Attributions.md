@@ -7,4 +7,6 @@
 ## Citation #6: https://learn.microsoft.com/en-us/aspnet/core/security/key-vault-configuration?view=aspnetcore-8.0
 ## Citation #7: https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-external-users
 ## Citation #8: https://learn.microsoft.com/en-us/troubleshoot/azure/entra/entra-id/app-integration/error-code-aadsts50020-user-account-identity-provider-does-not-exist
-
+## Citation #9: https://www.youtube.com/watch?v=ZXfuxisC0IA&t=640s
+## Citation #10: https://stackoverflow.com/questions/47377058/should-i-ignore-the-launchsettings-json-file-from-being-committed-in-git
+## Citation #11: https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows
