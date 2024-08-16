@@ -14,3 +14,6 @@
 ## Citation #13: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated
 ## Citation #14: https://www.youtube.com/watch?v=5Hhj2GBMCzs&t=236s
 ## Citation #15: https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.problem?view=aspnetcore-8.0
+## Citation #16: https://stackoverflow.com/questions/16581822/must-declare-a-body-because-its-not-marked-abstract
+## Citation #17: https://learn.microsoft.com/en-us/dotnet/api/system.environment.setenvironmentvariable?view=net-8.0
+## Citation #18:
