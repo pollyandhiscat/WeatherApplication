@@ -46,8 +46,8 @@ namespace WeatherApplication.Controllers
         public async Task<string> RetrieveWeather(string city, string state, int zip=0)
         {
 
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://api.weatherapi.com/v1/");
+            var httpClient = _httpClientFactory.CreateClient();
+            httpClient.BaseAddress = new Uri("http://api.weatherapi.com/v1/");
 
             var queryParam = "";
             var key = GetWeatherAPIKey();       // TODO: We need to pass in the Azure key vault value to this variable. This is a fake key value.
@@ -83,7 +83,7 @@ namespace WeatherApplication.Controllers
                 // User provided all params and we can formulate the most precise query call.
             }
 
-            var response = await client.GetAsync($"current.json?key={key}&q={queryParam}&aqi=no");
+            var response = await httpClient.GetAsync($"current.json?key={key}&q={queryParam}&aqi=no");
             return await response.Content.ReadAsStringAsync();
 
         }
