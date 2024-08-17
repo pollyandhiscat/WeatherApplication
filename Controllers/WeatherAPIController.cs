@@ -43,7 +43,7 @@ namespace WeatherApplication.Controllers
 
         [HttpGet]
 
-        public async Task<string> RetrieveWeather(string city, string state, int zip=0)
+        public async Task<string> RetrieveWeather(string city, string state, int zip=85206)
         {
 
             var httpClient = _httpClientFactory.CreateClient("weatherAPIClient");
