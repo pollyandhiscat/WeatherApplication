@@ -11,14 +11,14 @@ var app = builder.Build();
 // If the app is running in development, we use local settings such as environment variables to authenticate with Azure.
 if (app.Environment.IsDevelopment())
 {
+    // TODO: We may need to restore this logic once we deploy to Azure, but make this happen for Production, not Dev.
 
-
-    var keyVaultEndpoint = new Uri(builder.Configuration["AZURE_KEY_VAULT_URI"]);
-    var azureSecret = builder.Configuration["AZURE_CLIENT_SECRET"];
-    var azureClientID = builder.Configuration["AZURE_CLIENT_ID"];
-    var azureTenantID = builder.Configuration["AZURE_TENANT_ID"];
-    builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new ClientSecretCredential(azureTenantID, azureClientID, azureSecret));
-    var weatherAPIKey = builder.Configuration["WeatherApplicationSecret"];
+    //var keyVaultEndpoint = new Uri(builder.Configuration["AZURE_KEY_VAULT_URI"]);
+    //var azureSecret = builder.Configuration["AZURE_CLIENT_SECRET"];
+    //var azureClientID = builder.Configuration["AZURE_CLIENT_ID"];
+    //var azureTenantID = builder.Configuration["AZURE_TENANT_ID"];
+    //builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new ClientSecretCredential(azureTenantID, azureClientID, azureSecret));
+    //var weatherAPIKey = builder.Configuration["WeatherApplicationSecret"];
     
 }
 
