@@ -46,7 +46,7 @@ namespace WeatherApplication.Controllers
         public async Task<string> RetrieveWeather(string city, string state, int zip=0)
         {
 
-            var httpClient = _httpClientFactory.CreateClient();
+            var httpClient = _httpClientFactory.CreateClient("weatherAPIClient");
             httpClient.BaseAddress = new Uri("http://api.weatherapi.com/v1/");
 
             var queryParam = "";
