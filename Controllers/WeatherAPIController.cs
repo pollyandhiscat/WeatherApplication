@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Reflection.Metadata.Ecma335;
 
 namespace WeatherApplication.Controllers
 {
@@ -10,17 +11,24 @@ namespace WeatherApplication.Controllers
     public class WeatherAPIController : ControllerBase
     {
 
+        private readonly ILogger<WeatherAPIController> _logger;
+
+
+        public WeatherAPIController(ILogger<WeatherAPIController> logger)
+        {
+            _logger = logger;
+        }
+
         [HttpGet("")]
 
-        public async Task<IActionResult> RetrieveWeather(string city, string state, int zip=0)
+        public async Task<string> RetrieveWeather(string city, string state, int zip=0)
         {
 
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://api.weatherapi.com/v1/");
 
             var queryParam = "";
-            var key = Environment.GetEnvironmentVariable("weatherAPIKey");      // Get the key we retrieved back in program.cs
-
+            var key = "123";        // TODO: We need to pass in the Azure key vault value to this variable. This is a fake key value.
 
             if (city is null && state is null && zip == 0) {
 
@@ -30,7 +38,7 @@ namespace WeatherApplication.Controllers
                  * as a safety precaution.
                 */
 
-                return Problem("No valid city, state, or zip code was provided.");
+                return "No valid city, state, or zip code was provided.";
 
             }
 
@@ -53,10 +61,8 @@ namespace WeatherApplication.Controllers
                 // User provided all params and we can formulate the most precise query call.
             }
 
-
-
-            var response = client.GetAsync($"current.json?key={key}&q={queryParam}&aqi=no"); // TODO: we need to pass a variable in here that contains the search string.
-            return Ok();
+            var response = await client.GetAsync($"current.json?key={key}&q={queryParam}&aqi=no");
+            return await response.Content.ReadAsStringAsync();
 
         }
     }
