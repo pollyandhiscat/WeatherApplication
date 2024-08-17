@@ -1,5 +1,6 @@
 using Azure.Identity;
 using Microsoft.AspNetCore.Server.IISIntegration;
+using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,13 @@ builder.Services.AddHttpClient("weatherAPIClient", client =>
 {
 
     client.BaseAddress = new Uri("http://api.weatherapi.com/v1/");
+
+});
+
+builder.Services.AddHttpClient("testClient", client =>
+{ 
+
+    client.BaseAddress = new Uri("https://api.restful-api.dev/objects");
 
 });
 
@@ -58,5 +66,10 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+
+    name: "weatherResult",
+    pattern: "{controller=WeatherAPIController}/{action=RetrieveWeather}/");
 
 app.Run();
