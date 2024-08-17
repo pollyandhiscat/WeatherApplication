@@ -19,7 +19,7 @@
 ## Citation #18: https://www.youtube.com/watch?v=bAXZx0zOeCU
 ## Citation #19: https://learn.microsoft.com/en-us/answers/questions/1320240/how-do-i-access-secrets-json-from-any-class
 ## Citation #20: https://restful-api.dev/
-## Citation #21: 
+## Citation #21: https://www.reddit.com/r/csharp/comments/ttykpm/parsing_json_response_of_an_api/?rdt=33459
 ## Citation #22:
 ## Citation #23:
 ## Citation #24:
