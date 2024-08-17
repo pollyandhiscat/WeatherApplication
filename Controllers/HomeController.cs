@@ -2,6 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WeatherApplication.Models;
 
+/*
+ * Code Citations:
+ * Citation #2
+ * Citation #18 
+ * Citation #19
+*/
+
 namespace WeatherApplication.Controllers
 {
     public class HomeController : Controller
