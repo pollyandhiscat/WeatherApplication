@@ -1,20 +1,17 @@
-﻿namespace WeatherApplication.Models.TestAPI
+﻿/*
+     * Code Citations:
+     * Citation #2
+
+*/
+
+namespace WeatherApplication.Models.TestAPI
 {
     public class testResult
     {
 
-        public string id { get; set; }
-        public string name { get; set; }
-        public string data { get; set; }
+        public string TestID { get; set; }
+        public string TestName { get; set; }
+        public string TestData { get; set; }
 
     }
-
-    public string GetFormattedResponse()
-    {
-
-
-
-    }
-
-    
 }
