@@ -17,7 +17,7 @@
 ## Citation #16: https://stackoverflow.com/questions/16581822/must-declare-a-body-because-its-not-marked-abstract
 ## Citation #17: https://learn.microsoft.com/en-us/dotnet/api/system.environment.setenvironmentvariable?view=net-8.0
 ## Citation #18: https://www.youtube.com/watch?v=bAXZx0zOeCU
-## Citation #19: 
+## Citation #19: https://learn.microsoft.com/en-us/answers/questions/1320240/how-do-i-access-secrets-json-from-any-class
 ## Citation #20:
 ## Citation #21: 
 ## Citation #22:
