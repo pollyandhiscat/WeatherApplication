@@ -1,10 +1,24 @@
 using Azure.Identity;
 using Microsoft.AspNetCore.Server.IISIntegration;
+using System.Net.Http;
 var builder = WebApplication.CreateBuilder(args);
+
+/*
+ * Code Citations:
+ * Citation #18 
+ * Citation #19
+*/
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddHttpClient();
+
+// Create the client for connecting to the WeatherAPI
+builder.Services.AddHttpClient("weatherAPIClient", client =>
+{
+
+    client.BaseAddress = new Uri("http://api.weatherapi.com/v1/");
+
+});
 
 var app = builder.Build();
 
