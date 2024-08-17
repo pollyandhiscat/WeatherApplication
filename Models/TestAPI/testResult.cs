@@ -3,9 +3,18 @@
     public class testResult
     {
 
-        public int zipCode { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
+        public string id { get; set; }
+        public string name { get; set; }
+        public string data { get; set; }
 
     }
+
+    public string GetFormattedResponse()
+    {
+
+
+
+    }
+
+    
 }
