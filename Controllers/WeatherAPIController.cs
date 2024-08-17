@@ -3,6 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Reflection.Metadata.Ecma335;
 
+/*
+ * Code Citations:
+ * Citation #18 
+ * 
+*/
+
 namespace WeatherApplication.Controllers
 {
     [Route("api/[controller]")]
