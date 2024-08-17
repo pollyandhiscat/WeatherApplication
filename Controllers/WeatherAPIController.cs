@@ -18,11 +18,14 @@ namespace WeatherApplication.Controllers
     {
 
         private readonly ILogger<WeatherAPIController> _logger;
+        private readonly IHttpClientFactory _httpClientFactory;
 
 
-        public WeatherAPIController(ILogger<WeatherAPIController> logger)
+        public WeatherAPIController(ILogger<WeatherAPIController> logger, IHttpClientFactory httpClientFactory)
         {
+            
             _logger = logger;
+            _httpClientFactory = httpClientFactory;
         }
 
         public IConfiguration _config;
@@ -38,7 +41,7 @@ namespace WeatherApplication.Controllers
 
         }
 
-        [HttpGet("")]
+        [HttpGet]
 
         public async Task<string> RetrieveWeather(string city, string state, int zip=0)
         {
