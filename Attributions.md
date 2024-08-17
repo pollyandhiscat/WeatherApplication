@@ -20,6 +20,6 @@
 ## Citation #19: https://learn.microsoft.com/en-us/answers/questions/1320240/how-do-i-access-secrets-json-from-any-class
 ## Citation #20: https://restful-api.dev/
 ## Citation #21: https://www.reddit.com/r/csharp/comments/ttykpm/parsing_json_response_of_an_api/?rdt=33459
-## Citation #22:
-## Citation #23:
-## Citation #24:
+## Citation #22: https://www.youtube.com/watch?v=2C1SOPMiQmc
+## Citation #23: https://stackoverflow.com/questions/67696102/parsing-json-file-in-c-sharp-to-get-into-all-sections-and-properties
+## Citation #24: https://www.youtube.com/watch?v=_TgiJR13cT4&t=68s
