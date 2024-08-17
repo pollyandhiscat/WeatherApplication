@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Home Page";
-    // TODO: Turn this logic into a controller function and have the value returned to this View.
+    // TODO: Turn this logic into a controller or model function and have the value returned to this View.
     DateTime timeOfDay = DateTime.Now;
     // Citation #1
     int currentHour = timeOfDay.Hour;
@@ -39,6 +39,16 @@
 
             <label asp-for="zipCode">Zip Code:</label>
             <input asp-for="zipCode"/>
+
+            <label asp-for="city">City:</label>
+            <input asp-for="city" />
+
+            <label asp-for="state">State:</label>
+            <input asp-for="state" />
+
+            <button type="submit">Fetch Results</button>
+
+            <a asp-action="Index">Reset</a>
 
         </div>
 
