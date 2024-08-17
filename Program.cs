@@ -2,11 +2,6 @@ using Azure.Identity;
 using Microsoft.AspNetCore.Server.IISIntegration;
 var builder = WebApplication.CreateBuilder(args);
 
- static void SetEnvironmentVariable(string name, string value)
-{
-
-}
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -24,7 +19,6 @@ if (app.Environment.IsDevelopment())
     var azureTenantID = builder.Configuration["AZURE_TENANT_ID"];
     builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new ClientSecretCredential(azureTenantID, azureClientID, azureSecret));
     var weatherAPIKey = builder.Configuration["WeatherApplicationSecret"];
-    SetEnvironmentVariable(weatherAPIKey, weatherAPIKey);
     
 }
 

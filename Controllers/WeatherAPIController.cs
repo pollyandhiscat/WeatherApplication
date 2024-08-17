@@ -1,22 +1,25 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace WeatherApplication.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class WeatherAPIController : ControllerBase
     {
 
         [HttpGet("")]
 
-        public async Task<IActionResult> RetrieveWeather(string key, string city, string state, int zip=0)
+        public async Task<IActionResult> RetrieveWeather(string city, string state, int zip=0)
         {
 
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://api.weatherapi.com/v1/");
 
             var queryParam = "";
+            var key = Environment.GetEnvironmentVariable("weatherAPIKey");      // Get the key we retrieved back in program.cs
 
 
             if (city is null && state is null && zip == 0) {
