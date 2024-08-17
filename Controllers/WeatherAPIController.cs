@@ -25,6 +25,19 @@ namespace WeatherApplication.Controllers
             _logger = logger;
         }
 
+        public IConfiguration _config;
+        public WeatherAPIController(IConfiguration configuration) {
+
+            _config = configuration;
+        
+        }
+
+        public string GetWeatherAPIKey() {
+
+         return _config.GetValue<string>("WeatherAPIKey");
+
+        }
+
         [HttpGet("")]
 
         public async Task<string> RetrieveWeather(string city, string state, int zip=0)
@@ -34,7 +47,7 @@ namespace WeatherApplication.Controllers
             client.BaseAddress = new Uri("http://api.weatherapi.com/v1/");
 
             var queryParam = "";
-            var key = "123";        // TODO: We need to pass in the Azure key vault value to this variable. This is a fake key value.
+            var key = GetWeatherAPIKey();       // TODO: We need to pass in the Azure key vault value to this variable. This is a fake key value.
 
             if (city is null && state is null && zip == 0) {
 
