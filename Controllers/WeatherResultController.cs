@@ -11,6 +11,7 @@ using WeatherResult.Models;
  * Citation #18 
  * Citation #19
  * Citation #25
+ * Citation #26
 */
 
 namespace WeatherApplication.Controllers
@@ -33,15 +34,14 @@ namespace WeatherApplication.Controllers
         public IConfiguration _config;
 
         [HttpPost]
-        public async Task<IActionResult> ShowResult(string city, string state, int zip)
+        public async Task<IActionResult> ShowResult(string city, string state, string zipcode)
         {
 
             var httpClient = _httpClientFactory.CreateClient("weatherAPIClient");
             var queryParam = "";
             var key = _config.GetValue<string>("WeatherAPIKey");
-            List<WeatherResultModel> weatherList = new List<WeatherResultModel>();
 
-            if (city is null && state is null && zip == 0) {
+            if (city is null && state is null && zipcode is null) {
 
                 /*
                  * User did not supply anything. This shouldn't happen
@@ -50,28 +50,29 @@ namespace WeatherApplication.Controllers
                 */
 
                 ViewBag.result = "No valid city, state, or zip code was provided";
-                return View();
+                return View("WeatherResult");
 
             }
 
-            else if (city != null && state is null & zip == 0) {
-
-                // If the user only supplied the city.
-                queryParam = $"{city}";
-            
-            }
-
-            else if (zip is not 0) {
-
-                // User did not specify a zip code. Use city value instead.
-                queryParam = $"{zip}";
-            }
-
-            else
+            else if (zipcode is not null)
             {
 
-                queryParam = $"{zip}";
-                // User provided all params and we can formulate the most precise query call.
+                /*
+                 * If the user supplies the zip, we should default to that
+                 * as it is the most accurate.
+                */
+
+                queryParam = $"{zipcode}";
+            }
+
+            else if (city is not null  && state is not null & zipcode is null) {
+                /*
+                 * When the user omits the zip code but
+                 * provides us the city and state.
+                */
+
+                queryParam = $"{city},{state}";
+            
             }
 
             var response = await httpClient.GetAsync($"current.json?key={key}&q={queryParam}&aqi=no");
@@ -79,15 +80,14 @@ namespace WeatherApplication.Controllers
             if (response.IsSuccessStatusCode)
             {
                 var responseObject = await response.Content.ReadAsStringAsync();
-                var responseList = JsonSerializer.Deserialize<List<WeatherResultModel>>(responseObject);
-                ViewBag.result = responseList.ToString();
+                ViewBag.result = responseObject;
                 return View("WeatherResult");
 
             }
 
             else
             {
-                ViewBag.result = $"There was an error making the API call. Return code: {response.StatusCode}";
+                ViewBag.result = $"There was an error making the API call. \n Response: {response.ReasonPhrase}";
                 return View("WeatherResult");
             }
         }
