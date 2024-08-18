@@ -1,10 +1,10 @@
-﻿namespace WeatherApplication.Models
+﻿namespace WeatherResult.Models
 {
-    public class weatherResult
+    public class WeatherResultModel
     {
-        public int zipCode { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
+        public int ZipCode { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
 
     }
 }
