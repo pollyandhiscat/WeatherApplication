@@ -33,7 +33,7 @@ namespace WeatherApplication.Controllers
         public IConfiguration _config;
 
         [HttpPost]
-        public async Task<IActionResult> Index(string city, string state, int zip)
+        public async Task<IActionResult> ShowResult(string city, string state, int zip)
         {
 
             var httpClient = _httpClientFactory.CreateClient("weatherAPIClient");
@@ -81,14 +81,14 @@ namespace WeatherApplication.Controllers
                 var responseObject = await response.Content.ReadAsStringAsync();
                 var responseList = JsonSerializer.Deserialize<List<WeatherResultModel>>(responseObject);
                 ViewBag.result = responseList.ToString();
-                return View();
+                return View("WeatherResult");
 
             }
 
             else
             {
                 ViewBag.result = $"There was an error making the API call. Return code: {response.StatusCode}";
-                return View();
+                return View("WeatherResult");
             }
         }
     }
