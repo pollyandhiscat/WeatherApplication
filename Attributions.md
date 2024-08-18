@@ -28,3 +28,4 @@
 ## Citation #27: https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/deserialization
 ## Citation #28: https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/overview
 ## Citation #29: https://stackoverflow.com/questions/6899582/i-change-the-capitalization-of-a-directory-and-git-doesnt-seem-to-pick-up-on-it
+## Citation #30: https://learn.microsoft.com/en-us/visualstudio/ide/reference/paste-json-xml?view=vs-2022
