@@ -27,3 +27,4 @@
 ## Citation #26: https://www.weatherapi.com/docs/
 ## Citation #27: https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/deserialization
 ## Citation #28: https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/overview
+## Citation #29: https://stackoverflow.com/questions/6899582/i-change-the-capitalization-of-a-directory-and-git-doesnt-seem-to-pick-up-on-it
