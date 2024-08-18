@@ -26,14 +26,6 @@ namespace WeatherApplication.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult WeatherResult(WeatherResultModel model) {
-
-            ViewBag.WeatherResult = $"City: {model.City}  State: {model.State}  Zip Code: {model.ZipCode}";
-            return View(model);
-        
-        }
-
         public IActionResult Privacy()
         {
             return View();
