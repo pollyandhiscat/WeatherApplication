@@ -8,6 +8,7 @@
          * Citation #2
          * Citation #18
          * Citation #19
+         * Citation #25
         */
     ViewData["Title"] = "Home Page";
     // TODO: Turn this logic into a controller or model function and have the value returned to this View.
@@ -37,28 +38,24 @@
     <h1 class="display-4">Good @timeGreeting</h1>
     <h3>To get started with weather retrieval, simply enter location information <br> into the prompt boxes.</h3>
 </div>
+                
+@using (Html.BeginForm("Index","WeatherResult"))
+{
+    <div>
 
-<div>
-        
-    <form asp-action="WeatherResult" method="post">
-      
-        <div>
+        <label asp-for="ZipCode">Zip Code:</label>
+        <input asp-for="ZipCode" />
 
-            <label asp-for="ZipCode">Zip Code:</label>
-            <input asp-for="ZipCode"/>
+        <label asp-for="City">City:</label>
+        <input asp-for="City" />
 
-            <label asp-for="City">City:</label>
-            <input asp-for="City" />
+        <label asp-for="State">State:</label>
+        <input asp-for="State" />
 
-            <label asp-for="State">State:</label>
-            <input asp-for="State" />
+        <button type="submit">Fetch Results</button>
 
-            <button type="submit">Fetch Results</button>
+        <a asp-action="Index">Reset</a>
 
-            <a asp-action="Index">Reset</a>
+    </div>
 
-        </div>
-
-    </form>
-
-</div>
+}
