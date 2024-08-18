@@ -4,7 +4,7 @@ using System;
 using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using WeatherApplication.Models;
+using WeatherResult.Models;
 
 /*
  * Code Citations:
@@ -14,46 +14,31 @@ using WeatherApplication.Models;
 
 namespace WeatherApplication.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-
-    public class WeatherAPIController : ControllerBase
+    public class WeatherResult : Controller
     {
 
-        private readonly ILogger<WeatherAPIController> _logger;
+        private readonly ILogger<WeatherResult> _logger;
         private readonly IHttpClientFactory _httpClientFactory;
 
 
-        public WeatherAPIController(ILogger<WeatherAPIController> logger, IHttpClientFactory httpClientFactory)
+        public WeatherResult(ILogger<WeatherResult> logger, IHttpClientFactory httpClientFactory, IConfiguration configuration)
         {
             
             _logger = logger;
             _httpClientFactory = httpClientFactory;
+            _config = configuration;
         }
 
         public IConfiguration _config;
-        public WeatherAPIController(IConfiguration configuration) {
-
-            _config = configuration;
-        
-        }
-
-        public string GetWeatherAPIKey() {
-
-         return _config.GetValue<string>("WeatherAPIKey");
-
-        }
 
         [HttpGet]
-
-        public async Task<string> RetrieveWeather(string city, string state, int zip=85206)
+        public async Task<IActionResult> Index(string city, string state, int zip)
         {
 
             var httpClient = _httpClientFactory.CreateClient("weatherAPIClient");
-            httpClient.BaseAddress = new Uri("http://api.weatherapi.com/v1/");
-
             var queryParam = "";
-            var key = GetWeatherAPIKey();       // TODO: We need to pass in the Azure key vault value to this variable. This is a fake key value.
+            var key = _config.GetValue<string>("WeatherAPIKey");
+            List<WeatherResultModel> weatherList = new List<WeatherResultModel>();
 
             if (city is null && state is null && zip == 0) {
 
@@ -63,7 +48,8 @@ namespace WeatherApplication.Controllers
                  * as a safety precaution.
                 */
 
-                return "No valid city, state, or zip code was provided.";
+                ViewBag.result = "No valid city, state, or zip code was provided";
+                return View();
 
             }
 
@@ -87,22 +73,21 @@ namespace WeatherApplication.Controllers
                 // User provided all params and we can formulate the most precise query call.
             }
 
-            List<weatherResult> weatherList = new List<weatherResult>();
-
             var response = await httpClient.GetAsync($"current.json?key={key}&q={queryParam}&aqi=no");
 
             if (response.IsSuccessStatusCode)
             {
                 var responseObject = await response.Content.ReadAsStringAsync();
-                var responseList = JsonSerializer.Deserialize<weatherResult>(responseObject);
-                return responseList.ToString();
+                var responseList = JsonSerializer.Deserialize<List<WeatherResultModel>>(responseObject);
+                ViewBag.result = responseList.ToString();
+                return View();
 
             }
 
             else
             {
-
-                return "There was an error making the API call.";
+                ViewBag.result = $"There was an error making the API call. Return code: {response.StatusCode}";
+                return View();
             }
         }
     }
