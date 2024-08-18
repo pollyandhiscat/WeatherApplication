@@ -70,6 +70,6 @@ app.MapControllerRoute(
 app.MapControllerRoute(
 
     name: "WeatherResult",
-    pattern: "{controller=WeatherAPIController}/{action=WeatherResult}/");
+    pattern: "{controller=WeatherResultController}/{action=RetrieveWeather}/");
 
 app.Run();
