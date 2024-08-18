@@ -24,3 +24,6 @@
 ## Citation #23: https://stackoverflow.com/questions/67696102/parsing-json-file-in-c-sharp-to-get-into-all-sections-and-properties
 ## Citation #24: https://www.youtube.com/watch?v=_TgiJR13cT4&t=68s
 ## Citation #25: https://www.youtube.com/watch?v=MRP8o18PLrc&t=352s
+## Citation #26: https://www.weatherapi.com/docs/
+## Citation #27: https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/deserialization
+## Citation #28: https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/overview
