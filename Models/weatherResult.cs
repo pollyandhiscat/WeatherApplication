@@ -2,6 +2,7 @@
  * Code Citations:
  * Citation #27 
  * Citation #28
+ * 
 */
 
 namespace WeatherResult.Models
