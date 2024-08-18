@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Reflection.Metadata.Ecma335;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using WeatherApplication.Models;
 
 /*
  * Code Citations:
@@ -80,12 +83,27 @@ namespace WeatherApplication.Controllers
             else
             {
 
+                queryParam = $"{zip}";
                 // User provided all params and we can formulate the most precise query call.
             }
 
-            var response = await httpClient.GetAsync($"current.json?key={key}&q={queryParam}&aqi=no");
-            return await response.Content.ReadAsStringAsync();
+            List<weatherResult> weatherList = new List<weatherResult>();
 
+            var response = await httpClient.GetAsync($"current.json?key={key}&q={queryParam}&aqi=no");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseObject = await response.Content.ReadAsStringAsync();
+                var responseList = JsonSerializer.Deserialize<weatherResult>(responseObject);
+                return responseList.ToString();
+
+            }
+
+            else
+            {
+
+                return "There was an error making the API call.";
+            }
         }
     }
 }
