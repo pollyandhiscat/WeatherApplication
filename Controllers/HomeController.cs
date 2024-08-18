@@ -25,7 +25,7 @@ namespace WeatherApplication.Controllers
             return View();
         }
 
-        public IActionResult TestIndex() {
+        public IActionResult WeatherResult() {
         
             return View();
         
