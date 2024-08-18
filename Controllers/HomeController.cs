@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WeatherApplication.Models;
+using WeatherResult.Models;
 
 /*
  * Code Citations:
@@ -25,9 +26,11 @@ namespace WeatherApplication.Controllers
             return View();
         }
 
-        public IActionResult WeatherResult() {
-        
-            return View();
+        [HttpPost]
+        public IActionResult WeatherResult(WeatherResultModel model) {
+
+            ViewBag.WeatherResult = $"City: {model.City}  State: {model.State}  Zip Code: {model.ZipCode}";
+            return View(model);
         
         }
 
