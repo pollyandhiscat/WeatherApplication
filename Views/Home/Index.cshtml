@@ -1,4 +1,4 @@
-﻿@model weatherResult
+﻿@model WeatherResult.Models.WeatherResultModel
 
 @{
 
@@ -40,18 +40,18 @@
 
 <div>
         
-    <form asp-action="weatherResult" method="post">
+    <form asp-action="WeatherResult" method="post">
       
         <div>
 
-            <label asp-for="zipCode">Zip Code:</label>
-            <input asp-for="zipCode"/>
+            <label asp-for="ZipCode">Zip Code:</label>
+            <input asp-for="ZipCode"/>
 
-            <label asp-for="city">City:</label>
-            <input asp-for="city" />
+            <label asp-for="City">City:</label>
+            <input asp-for="City" />
 
-            <label asp-for="state">State:</label>
-            <input asp-for="state" />
+            <label asp-for="State">State:</label>
+            <input asp-for="State" />
 
             <button type="submit">Fetch Results</button>
 
