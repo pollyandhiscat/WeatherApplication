@@ -34,3 +34,4 @@
 ## Citation #33: https://www.youtube.com/watch?v=0QO2jdinCoQ&t=43s
 ## Citation #34: https://learn.microsoft.com/en-us/dotnet/api/overview/azure/security.keyvault.secrets-readme?view=azure-dotnet
 ## Citation #34: Microsoft Visual Studio to Azure 'Publish' feature.
+## Citation #35: https://www.youtube.com/watch?v=5jOvVY1G62U
