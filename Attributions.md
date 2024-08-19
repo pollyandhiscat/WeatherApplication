@@ -32,3 +32,4 @@
 ## Citation #31: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/maps/Azure.Maps.Rendering
 ## Citation #32: https://learn.microsoft.com/en-us/azure/azure-maps/map-create
 ## Citation #33: https://www.youtube.com/watch?v=0QO2jdinCoQ&t=43s
+## Citation #34: https://learn.microsoft.com/en-us/dotnet/api/overview/azure/security.keyvault.secrets-readme?view=azure-dotnet

@@ -10,6 +10,8 @@ using Azure.ResourceManager.Maps;
 using Azure.ResourceManager.Maps.Models;
 using Azure.Maps.Rendering;
 using Azure;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 
 /*
  * Code Citations:
@@ -43,14 +45,15 @@ namespace WeatherApplication.Controllers
 
         [HttpPost]
         public async Task<IActionResult> ShowResult(string city, string state, string zipcode)
-        {            
-            var queryParam = "";
-            var weatherAPIKey = _config.GetValue<string>("WeatherAPIKey");
-            var azureMapsAPIKey = _config.GetValue<string>("AzureMapsAPIKey");
-            var weatherAPIHTTPClient = _httpClientFactory.CreateClient("weatherAPIClient");
+        {
 
-            AzureKeyCredential azureKey = new AzureKeyCredential(azureMapsAPIKey);
-            var mapClient = new MapsRenderingClient(azureKey);
+            // Citation #34
+            var client = new SecretClient(vaultUri: new Uri("https://weather-app-key-vault.vault.azure.net/"), credential: new DefaultAzureCredential());
+            KeyVaultSecret secret = client.SetSecret("secret-name", "secret-value");
+            var weatherAPIKey = client.GetSecret("WeatherApplicationSecret");
+
+            var queryParam = "";
+            var weatherAPIHTTPClient = _httpClientFactory.CreateClient("weatherAPIClient");
 
             if (city is null && state is null && zipcode is null)
             {
