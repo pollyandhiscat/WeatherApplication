@@ -2,6 +2,8 @@ using Azure.Identity;
 using Microsoft.AspNetCore.Server.IISIntegration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http;
+using Azure.Core;
+using Azure.Security.KeyVault.Secrets;
 var builder = WebApplication.CreateBuilder(args);
 
 /*
@@ -20,6 +22,24 @@ builder.Services.AddHttpClient("weatherAPIClient", client =>
     client.BaseAddress = new Uri("http://api.weatherapi.com/v1/");
 
 });
+
+SecretClientOptions options = new SecretClientOptions()
+{
+    Retry =
+        {
+            Delay= TimeSpan.FromSeconds(2),
+            MaxDelay = TimeSpan.FromSeconds(16),
+            MaxRetries = 5,
+            Mode = RetryMode.Exponential
+         }
+};
+
+// Citation #36, Citation #37
+var client = new SecretClient(new Uri("https://weather-app-key-vault.vault.azure.net/"), new DefaultAzureCredential(), options);
+
+KeyVaultSecret secret = client.GetSecret("WeatherApplicationSecret");
+
+string secretValue = secret.Value;
 
 var app = builder.Build();
 
@@ -64,5 +84,8 @@ app.MapControllerRoute(
 
     name: "WeatherResult",
     pattern: "{controller=WeatherResultController}/{action=RetrieveWeather}/");
+
+// Citation #36
+app.MapGet("/", () => secretValue);
 
 app.Run();

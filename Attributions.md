@@ -35,3 +35,5 @@
 ## Citation #34: https://learn.microsoft.com/en-us/dotnet/api/overview/azure/security.keyvault.secrets-readme?view=azure-dotnet
 ## Citation #34: Microsoft Visual Studio to Azure 'Publish' feature.
 ## Citation #35: https://www.youtube.com/watch?v=5jOvVY1G62U
+## Citation #36: https://learn.microsoft.com/en-us/azure/key-vault/general/tutorial-net-create-vault-azure-web-app?tabs=azure-cli#code-try-13
+## Citation #37: https://learn.microsoft.com/en-us/aspnet/core/security/key-vault-configuration?view=aspnetcore-7.0
