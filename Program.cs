@@ -21,13 +21,6 @@ builder.Services.AddHttpClient("weatherAPIClient", client =>
 
 });
 
-builder.Services.AddHttpClient("testClient", client =>
-{ 
-
-    client.BaseAddress = new Uri("https://api.restful-api.dev/objects");
-
-});
-
 var app = builder.Build();
 
 // Citation #9, Citation #10, Citation #11

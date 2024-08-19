@@ -5,6 +5,11 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using WeatherResult.Models;
+using Azure.ResourceManager;
+using Azure.ResourceManager.Maps;
+using Azure.ResourceManager.Maps.Models;
+using Azure.Maps.Rendering;
+using Azure;
 
 /*
  * Code Citations:
@@ -12,6 +17,9 @@ using WeatherResult.Models;
  * Citation #19
  * Citation #25
  * Citation #26
+ * Citation #31
+ * Citation #32
+ * Citation #33
 */
 
 namespace WeatherApplication.Controllers
@@ -35,11 +43,14 @@ namespace WeatherApplication.Controllers
 
         [HttpPost]
         public async Task<IActionResult> ShowResult(string city, string state, string zipcode)
-        {
-
-            var httpClient = _httpClientFactory.CreateClient("weatherAPIClient");
+        {            
             var queryParam = "";
-            var key = _config.GetValue<string>("WeatherAPIKey");
+            var weatherAPIKey = _config.GetValue<string>("WeatherAPIKey");
+            var azureMapsAPIKey = _config.GetValue<string>("AzureMapsAPIKey");
+            var weatherAPIHTTPClient = _httpClientFactory.CreateClient("weatherAPIClient");
+
+            AzureKeyCredential azureKey = new AzureKeyCredential(azureMapsAPIKey);
+            var mapClient = new MapsRenderingClient(azureKey);
 
             if (city is null && state is null && zipcode is null)
             {
@@ -77,7 +88,7 @@ namespace WeatherApplication.Controllers
 
             }
 
-            var response = await httpClient.GetAsync($"current.json?key={key}&q={queryParam}&aqi=no");
+            var response = await weatherAPIHTTPClient.GetAsync($"current.json?key={weatherAPIKey}&q={queryParam}&aqi=no");
 
             if (response.IsSuccessStatusCode)
             {
