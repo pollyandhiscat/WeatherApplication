@@ -22,6 +22,10 @@ using Azure.Security.KeyVault.Secrets;
  * Citation #31
  * Citation #32
  * Citation #33
+ * Citation #38
+ * Citation #39
+ * Citation #40
+ * Citation #41
 */
 
 namespace WeatherApplication.Controllers
@@ -45,15 +49,25 @@ namespace WeatherApplication.Controllers
 
         [HttpPost]
         public async Task<IActionResult> ShowResult(string city, string state, string zipcode)
-        {
-
-            // Citation #34
-            var client = new SecretClient(vaultUri: new Uri("https://weather-app-key-vault.vault.azure.net/"), credential: new DefaultAzureCredential());
-            KeyVaultSecret secret = client.SetSecret("secret-name", "secret-value");
-            var weatherAPIKey = client.GetSecret("WeatherApplicationSecret");
-
+        { 
             var queryParam = "";
             var weatherAPIHTTPClient = _httpClientFactory.CreateClient("weatherAPIClient");
+            var WeatherAPIKey = "";
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            if (environment == "PRODUCTION")
+            {
+                // If the environment is production (Azure), we use the environment variable from Azure app service.
+                WeatherAPIKey = Environment.GetEnvironmentVariable("WeatherAPIKey");
+            }
+
+            else
+            {
+                // If the environment is development (local), we use the value from our 'secrets.json' file.
+                // 'secrets.json' is not stored on GitHub nor part of the Git tracking mechanism.
+                WeatherAPIKey = _config.GetValue<string>("WeatherAPIKey");
+
+            }
 
             if (city is null && state is null && zipcode is null)
             {
@@ -91,7 +105,7 @@ namespace WeatherApplication.Controllers
 
             }
 
-            var response = await weatherAPIHTTPClient.GetAsync($"current.json?key={weatherAPIKey}&q={queryParam}&aqi=no");
+            var response = await weatherAPIHTTPClient.GetAsync($"current.json?key={WeatherAPIKey}&q={queryParam}&aqi=no");
 
             if (response.IsSuccessStatusCode)
             {
