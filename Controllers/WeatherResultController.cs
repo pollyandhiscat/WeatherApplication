@@ -147,6 +147,7 @@ namespace WeatherApplication.Controllers
                 var uv = weatherDataSet.current.uv;
                 var gust_mph = weatherDataSet.current.gust_mph;
                 var gust_kph = weatherDataSet.current.gust_kph;
+                var icon = weatherDataSet.current.condition.icon;
 
 
                 ViewBag.name = weatherDataSet.location.name;
@@ -185,6 +186,7 @@ namespace WeatherApplication.Controllers
                 ViewBag.uv = uv;
                 ViewBag.gust_mph = gust_mph;
                 ViewBag.gust_kph = gust_kph;
+                ViewBag.icon = icon;
 
                 return View("WeatherResult");
 
