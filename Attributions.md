@@ -48,3 +48,4 @@
 ## Citation #46: https://www.linkedin.com/pulse/create-reusable-map-using-aspnet-mvc-openlayers-osm-ghazanfari/
 ## Citation #47: https://github.com/openlayers/openlayers/blob/main/LICENSE.md
 ## Citation #48: https://www.linkactions.com/blog/html-internal-link
+## Citation #49: https://visme.co/blog/website-color-schemes/
