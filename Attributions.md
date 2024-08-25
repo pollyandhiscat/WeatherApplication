@@ -44,3 +44,7 @@
 ## Citation #42: https://angular.dev/
 ## Citation #43: https://stackoverflow.com/questions/61085437/access-the-value-of-a-variable-outside-its-scope
 ## Citation #44: https://learn.microsoft.com/en-us/dotnet/api/system.environment.getenvironmentvariable?view=net-8.0
+## Citation #45: https://openlayers.org/download/
+## Citation #46: https://www.linkedin.com/pulse/create-reusable-map-using-aspnet-mvc-openlayers-osm-ghazanfari/
+## Citation #47: https://github.com/openlayers/openlayers/blob/main/LICENSE.md
+## Citation #48: https://www.linkactions.com/blog/html-internal-link
