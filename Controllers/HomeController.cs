@@ -26,7 +26,7 @@ namespace WeatherApplication.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Licenses()
         {
             return View();
         }
