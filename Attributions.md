@@ -52,3 +52,4 @@
 ## Citation #50: https://www.c-sharpcorner.com/blogs/how-to-convert-a-datetime-object-into-specific-timezone-in-c-sharp
 ## Citation #51: https://www.nuget.org/packages/foolproof
 ## Citation #52: https://stackoverflow.com/questions/43427335/require-one-field-or-another
+## Citation #53: https://github.com/rpgkaiser/FoolProof.Core
