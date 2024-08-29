@@ -46,13 +46,13 @@
     <div>
 
         <label asp-for="ZipCode">Zip Code (US only):</label>
-        <input asp-for="ZipCode" />
+        <input required id="zip" onchange="validateRequiredFields()" asp-for="ZipCode" />
 
         <label asp-for="City">City:</label>
-        <input asp-for="City" />
+        <input required id="city" onchange="validateRequiredFields()" asp-for="City" />
 
         <label asp-for="State">State:</label>
-        <input asp-for="State" />
+        <input required id="state" onchange="validateRequiredFields()" asp-for="State" />
 
         <button type="submit">Fetch Results</button>
 
