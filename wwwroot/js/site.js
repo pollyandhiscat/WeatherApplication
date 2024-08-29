@@ -51,3 +51,88 @@ function validateRequiredFields() {
     }
 
 }
+
+function hideElement(element) {
+
+    /*
+
+    Hides the given element from the webpage.
+
+    */
+
+    element.hideElement = true;
+
+}
+
+function retrieveUSLocation(answer) {
+
+    /*
+
+     Renders the zip code and city/state elements
+     for the user, depending on if they want to retrieve
+     a US location or not (global).
+
+    */
+
+    let retrieveUSLocationDiv = document.getElementById("getUSLocationPrompt");
+    let zipCodeKnow = document.getElementById("knowZipCodePrompt");
+
+    // If the user wants to enter a zip code, unhide the zip code field and data.
+    if (answer.toLowerCase() == 'yes') {
+
+        zipCodeKnow.hidden = false;
+        let cityStatePrompt = document.getElementById("getCityStatePrompt");
+        cityStatePrompt.hidden = true;
+
+    }
+
+    else {
+
+        showCityStatePrompt();
+    }
+
+}
+
+function userKnowsZipCode(answer) {
+
+    /*
+     
+     Renders the zip code data entry field
+     for the user or continues to hide it
+     if they do not know the zip code.
+
+    */
+
+    let retrieveUSLocationDiv = document.getElementById("getUSLocationPrompt");
+    let zipCodeEntry = document.getElementById("getZipCodePrompt");
+
+    // If the user wants to enter a zip code, unhide the zip code field and data.
+    if (answer.toLowerCase() == 'yes') {
+
+        zipCodeEntry.hidden = false;
+        let cityStatePrompt = document.getElementById("getCityStatePrompt");
+        cityStatePrompt.hidden = true;
+    }
+
+    else {
+
+        zipCodeEntry.hidden = true;
+        showCityStatePrompt();
+
+    }
+}
+
+function showCityStatePrompt() {
+
+    /*
+
+     Displays the city/state prompt, usually as
+     a result of the user not wanting to search a US
+     location or not knowing the zip code.
+
+    */
+
+    let cityStatePrompt = document.getElementById("getCityStatePrompt");
+    cityStatePrompt.hidden = false;
+
+}
