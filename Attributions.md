@@ -50,3 +50,5 @@
 ## Citation #48: https://www.linkactions.com/blog/html-internal-link
 ## Citation #49: https://visme.co/blog/website-color-schemes/
 ## Citation #50: https://www.c-sharpcorner.com/blogs/how-to-convert-a-datetime-object-into-specific-timezone-in-c-sharp
+## Citation #51: https://www.nuget.org/packages/foolproof
+## Citation #52: https://stackoverflow.com/questions/43427335/require-one-field-or-another
