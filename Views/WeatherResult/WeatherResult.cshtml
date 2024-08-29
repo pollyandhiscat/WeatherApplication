@@ -24,51 +24,69 @@
 </head>
 <body>
 
+ @{
+   if (ViewBag.success == false)
+    {
+
     <div id="weatherData">
 
-        <h3>@ViewBag.name  @ViewBag.region</h3>
-        <img src=@ViewBag.icon />
-        <h4>Local Time: @ViewBag.localtime</h4>
-        <h4>State: @ViewBag.region</h4>
-        <h4>Country: @ViewBag.country</h4>
-        <h4>Temperature: @ViewBag.temp_f (F)  @ViewBag.temp_c (C)</h4>
-        <h4>Wind Speed: @ViewBag.wind_mph (mph)  @ViewBag.wind_kph (kph)</h4>
-        <h4>Humidity: @ViewBag.humidity</h4>
-        <h4>UV Index: @ViewBag.uv</h4>
+        <h3>@ViewBag.result</h3>
 
-    </div>
+            </div>
 
-    <div id="mapObject">
+        }
 
-        <!--Citation #46 (code used and adapted from)-->
-        <link rel="stylesheet" href="/Content/ol.css" type="text/css">
-        <style>
-            .map {
-                height: 450px;
-                width: 700px;
-            }
-        </style>
-        <script src="/Scripts/ol.js"></script>
+        else
 
-        <div id="map" class="map"></div>
+        {
 
-        <script type="text/javascript">
-            var map = new ol.Map({
-                target: 'map',
-                layers: [
-                    new ol.layer.Tile({
-                        source: new ol.source.OSM()
-                    })
-                ],
-                view: new ol.View({
-                    center: ol.proj.fromLonLat([@ViewBag.lon, @ViewBag.lat]),
-                    zoom: 12
-                })
-            });
-        </script>
+            <div id="weatherData">
 
-    </div>
+                <h3>@ViewBag.name  @ViewBag.region</h3>
+                <img src=@ViewBag.icon />
+                <h4>Local Time: @ViewBag.localtime</h4>
+                <h4>State: @ViewBag.region</h4>
+                <h4>Country: @ViewBag.country</h4>
+                <h4>Temperature: @ViewBag.temp_f (F)  @ViewBag.temp_c (C)</h4>
+                <h4>Wind Speed: @ViewBag.wind_mph (mph)  @ViewBag.wind_kph (kph)</h4>
+                <h4>Humidity: @ViewBag.humidity</h4>
+                <h4>UV Index: @ViewBag.uv</h4>
 
+            </div>
+
+            <div id="mapObject">
+
+                <!--Citation #46 (code used and adapted from)-->
+                <link rel="stylesheet" href="/Content/ol.css" type="text/css">
+                <style>
+                    .map {
+                        height: 450px;
+                        width: 700px;
+                    }
+                </style>
+                <script src="/Scripts/ol.js"></script>
+
+                <div id="map" class="map"></div>
+
+                <script type="text/javascript">
+                    var map = new ol.Map({
+                        target: 'map',
+                        layers: [
+                            new ol.layer.Tile({
+                                source: new ol.source.OSM()
+                            })
+                        ],
+                        view: new ol.View({
+                            center: ol.proj.fromLonLat([@ViewBag.lon, @ViewBag.lat]),
+                            zoom: 12
+                        })
+                    });
+                </script>
+
+            </div>
+        }
+
+    }
 
 </body>
 </html>
