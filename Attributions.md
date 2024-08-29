@@ -53,3 +53,6 @@
 ## Citation #51: https://www.nuget.org/packages/foolproof
 ## Citation #52: https://stackoverflow.com/questions/43427335/require-one-field-or-another
 ## Citation #53: https://github.com/rpgkaiser/FoolProof.Core
+## Citation #54: https://stackoverflow.com/questions/69981389/html-form-field-required-if-another-field-is-not-null
+## Citation #55: https://gendermag.org/dc/
+## Citation #56: https://stackoverflow.com/questions/25628209/dynamically-change-required-atributte-for-html5-input-control
