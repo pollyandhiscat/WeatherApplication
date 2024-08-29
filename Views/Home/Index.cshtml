@@ -47,24 +47,56 @@
                 
 @using (Html.BeginForm("ShowResult","WeatherResult"))
 {
+    <div id="getUSLocationPrompt">
 
-    <h6>Enter a zip code (US only) or a city and state. If the city and state are outside the US, please use
-        the abbreviation of the country in the 'State' field (i.e. GBR, CAN, MEX  etc.)
-    </h6>
-    <div>
+        <h6>Are you wanting to retrieve a US based location?</h6>
+        <button id="usYes" onclick="retrieveUSLocation('Yes')" type="button">Yes</button>
+        <button id="usNo" onclick="retrieveUSLocation('No')" type="button">No</button>
+        <br />
+
+    </div>
+
+    <div hidden id="knowZipCodePrompt">
+
+        <h6>Do you know the zipcode of your US location?</h6>
+        <button id="usZipYes" onclick="userKnowsZipCode('Yes')" type="button">Yes</button>
+        <button id="usZipNo" onclick="userKnowsZipCode('No')" type="button">No</button>
+
+    </div>
+
+    <div hidden id="getZipCodePrompt">
+
+        <h6>
+            Enter a zip code (US only) or a city and state. If the city and state are outside the US, please use
+            the abbreviation of the country in the 'State' field (i.e. GBR, CAN, MEX  etc.)
+        </h6>
 
         <label asp-for="ZipCode">Zip Code:</label>
-        <input required id="zip" onchange="validateRequiredFields()" asp-for="ZipCode" />
+        <input placeholder="98662" required id="zip" onchange="validateRequiredFields()" asp-for="ZipCode" />
+        <button type="submit">Fetch Results</button>
+        <a asp-action="Index">Start Over</a>
+
+    </div>
+
+    <div hidden id="getCityStatePrompt">
+
+        <h6>
+            Enter a city and state combination. If the city and state are outside the US, please use
+            the abbreviation of the country in the 'State' field (i.e. GBR, CAN, MEX  etc.)
+        </h6>
 
         <label asp-for="City">City:</label>
-        <input required id="city" onchange="validateRequiredFields()" asp-for="City" />
+        <input placeholder="Vancouver" required id="city" onchange="validateRequiredFields()" asp-for="City" />
 
         <label asp-for="State">State:</label>
-        <input required id="state" onchange="validateRequiredFields()" asp-for="State" />
+        <input placeholder="Washington" required id="state" onchange="validateRequiredFields()" asp-for="State" />
 
         <button type="submit">Fetch Results</button>
+        <a asp-action="Index">Start Over</a>
 
-        <a asp-action="Index">Reset</a>
+    </div>
+
+    <div>
 
     </div>
 
