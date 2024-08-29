@@ -78,7 +78,8 @@ namespace WeatherApplication.Controllers
                  * as a safety precaution.
                 */
 
-                ViewBag.result = "No valid city, state, or zip code was provided";
+                ViewBag.result = "No valid city, state, or zip code was provided. Please navigate back to home and try again.";
+                ViewBag.success = false;
                 return View("WeatherResult");
 
             }
@@ -187,6 +188,7 @@ namespace WeatherApplication.Controllers
                 ViewBag.gust_mph = gust_mph;
                 ViewBag.gust_kph = gust_kph;
                 ViewBag.icon = icon;
+                ViewBag.success = true;
 
                 return View("WeatherResult");
 
@@ -194,6 +196,7 @@ namespace WeatherApplication.Controllers
 
             else
             {
+                ViewBag.success = false;
                 ViewBag.result = $"There was an error making the API call. \n Response: {response.ReasonPhrase}";
                 return View("WeatherResult");
 }
