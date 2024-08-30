@@ -59,3 +59,4 @@
 ## Citation #57: https://www.iban.com/country-codes
 ## Citation #58: https://stackoverflow.com/questions/22148080/an-invalid-form-control-with-name-is-not-focusable
 ## Citation #59: https://www.w3schools.com/css/css3_flexbox_container.asp
+## Citation #60: https://stackoverflow.com/questions/43043113/how-to-force-reloading-a-page-when-using-browser-back-button
