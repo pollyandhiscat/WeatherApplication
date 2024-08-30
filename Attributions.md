@@ -57,3 +57,4 @@
 ## Citation #55: https://gendermag.org/dc/
 ## Citation #56: https://stackoverflow.com/questions/25628209/dynamically-change-required-atributte-for-html5-input-control
 ## Citation #57: https://www.iban.com/country-codes
+## Citation #58: https://stackoverflow.com/questions/22148080/an-invalid-form-control-with-name-is-not-focusable
