@@ -36,3 +36,11 @@ h6 {
 
     color:aliceblue;
 }
+
+/* Citation #59 */
+#locationDataAndMap {
+
+    display: flex;
+    justify-content: space-between;
+    
+}
