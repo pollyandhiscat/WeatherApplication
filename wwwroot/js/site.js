@@ -2,7 +2,24 @@
  * Code Citations:
  * Citation #54 
  * Citation #56
+ * Citation #60
 */
+
+function reloadPage() {
+
+    /*
+    
+    Reloads the page when the user hits the back button.
+
+    */
+
+    // Citation #60
+    if (performance.navigation.type === 2) {
+
+        location.reload(true);
+    }
+}
+
 function validateRequiredFields() {
 
     /*
@@ -136,3 +153,5 @@ function showCityStatePrompt() {
     cityStatePrompt.hidden = false;
 
 }
+
+reloadPage();
