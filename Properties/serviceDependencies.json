@@ -4,6 +4,10 @@
       "type": "secrets",
       "connectionId": "VaultUri",
       "dynamicId": null
+    },
+    "cosmosdb1": {
+      "type": "cosmosdb",
+      "connectionId": "COSMOS_CONNECTION"
     }
   }
 }
