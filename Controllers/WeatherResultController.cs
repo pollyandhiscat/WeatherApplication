@@ -12,6 +12,7 @@ using Azure.Maps.Rendering;
 using Azure;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
+using WeatherApplication.Controllers;
 
 /*
  * Code Citations:
@@ -53,12 +54,16 @@ namespace WeatherApplication.Controllers
             var queryParam = "";
             var weatherAPIHTTPClient = _httpClientFactory.CreateClient("weatherAPIClient");
             var WeatherAPIKey = "";
+            var cosmosDBKey = "";
+            var cosmosDBEndpoint = "";
             var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
             if (environment == "PRODUCTION")
             {
                 // If the environment is production (Azure), we use the environment variable from Azure app service.
                 WeatherAPIKey = Environment.GetEnvironmentVariable("WeatherAPIKey");
+                cosmosDBKey = Environment.GetEnvironmentVariable("AZURE_COSMOS_KEY");
+                cosmosDBEndpoint = Environment.GetEnvironmentVariable("AZURE_COSMOS_ENDPOINT");
             }
 
             else
@@ -66,6 +71,8 @@ namespace WeatherApplication.Controllers
                 // If the environment is development (local), we use the value from our 'secrets.json' file.
                 // 'secrets.json' is not stored on GitHub nor part of the Git tracking mechanism.
                 WeatherAPIKey = _config.GetValue<string>("WeatherAPIKey");
+                cosmosDBKey = _config.GetValue<string>("AZURE_COSMOS_KEY");
+                cosmosDBEndpoint = _config.GetValue<string>("AZURE_COSMOS_ENDPOINT");
 
             }
 
@@ -112,6 +119,7 @@ namespace WeatherApplication.Controllers
             {
                 var responseObject = await response.Content.ReadAsStringAsync();
                 var weatherDataSet = JsonSerializer.Deserialize<WeatherData>(responseObject);
+                await AddToCosmos.UpdateCosmos(cosmosDBEndpoint, cosmosDBKey, weatherDataSet);
                 var cityResult = weatherDataSet.location.name;
                 var stateResult = weatherDataSet.location.region;
                 var countryResult = weatherDataSet.location.country;
